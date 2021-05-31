@@ -21,6 +21,8 @@ my $cmd = $pdftotext . " -layout '$infile' -";
 # Eseguo l'ambaradan e mi preparo a leggere il risultato, riga per riga
 open (FH, "-|", $cmd) || die ("Errore nel lancio di pdftotext: $!");
 
+my $all_data_ref;
+
 my $prov_pos = 0;
 
 while(my $line = <FH>) {
@@ -91,6 +93,11 @@ while(my $line = <FH>) {
         $part2_v1 = $3;
         $part2_v2 = $4;
         $part2_v3 = $5;
+        # tolgo i punti separatori delle migliaia
+        $part2_n =~ s/\.//g;
+        $part2_v1 =~ s/\.//g;
+        $part2_v2 =~ s/\.//g;
+        $part2_v3 =~ s/\.//g;
     } else {
         die ("Caos con part2: [" . $part2 . "]");
     }
@@ -109,4 +116,19 @@ while(my $line = <FH>) {
     print "[v2] [" . $part2_v2 . "]\n";
     print "[v3] [" . $part2_v3 . "]\n";
     print "\n";
-} 
+
+    my $data_ref = {
+        'id' => $id,
+        'piva' => $piva,
+        'ragione_sociale' => $ragione_sociale,
+        'regione' => $part1_r,
+        'provincia' => $prov,
+        'citta' => $part2_c,
+        'num_quote' => $part2_n,
+        'v1' => $part2_v1,
+        'v2' => $part2_v2,
+        'v3' => $part2_v3
+    };
+
+    push (@{$all_data_ref}, $data_ref);
+}
