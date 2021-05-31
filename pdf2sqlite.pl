@@ -39,8 +39,10 @@ while(my $line = <FH>) {
         next;
     };
 
+    # print "[".$line."]\n";
+
     # se la riga non comincia con un numero, la salto
-    next if ($line !~ /^\d+/);
+    next if ($line !~ /^\s{0,1}\d+/);
 
     # Spacco la riga in tre parti (centrando sulla provincia)
     my $part1 = substr($line,0,$prov_pos);
@@ -63,14 +65,14 @@ while(my $line = <FH>) {
     };
 
     if (! $regione_found) {
-        die("Errore: non sono riuscito a trovare una regione giusta...")
+        die("Errore: non sono riuscito a trovare una regione giusta [".$part1."]...")
     };
 
     my $id;
     my $piva;
     my $ragione_sociale;
 
-    if ($part1_a =~ /^(\d+)\s+(\d+)\s+(.*?)\s+$/) {
+    if ($part1_a =~ /^\s{0,1}(\d+)\s+(\d+)\s+(.*?)\s+$/) {
         ($id, $piva, $ragione_sociale) = ($1, $2, $3);
     } else {
         die("Errore: non sono riuscito a spaccare la prima parte...")
@@ -131,4 +133,19 @@ while(my $line = <FH>) {
     };
 
     push (@{$all_data_ref}, $data_ref);
+}
+
+open (OH, ">>out.txt");
+foreach my $i (@{$all_data_ref}) {
+    printf OH "%d|%s|%s|%s|%s|%s|%d|%s|%s|%s\n",
+        $i->{'id'},
+        $i->{'piva'},
+        $i->{'ragione_sociale'},
+        $i->{'regione'},
+        $i->{'provincia'},
+        $i->{'citta'},
+        $i->{'num_quote'},
+        $i->{'v1'},
+        $i->{'v2'},
+        $i->{'v3'};
 }
