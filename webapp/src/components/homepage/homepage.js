@@ -103,7 +103,13 @@ export default {
     },
     // fetchData legge il file JSON e prepara le strutture dati
     'fetchData': async function () {
-      let response = await axios.get('/out.json')
+      let url = 'out.json'
+      if (process.env.NODE_ENV === 'production') {
+        url = '/ANALISI_FONDI_5x1000/out.json'
+      } else {
+        url = '/out.json'
+      }
+      let response = await axios.get(url)
       console.log('[fetchData] recuperati [' + response.data.length + '] record....')
 
       // strutture temporanee dove accumulo i dati per il grafico
