@@ -1,0 +1,14 @@
+webapp/node_modules
+webapp/dist
+
+# local env files
+webapp/.env
+webapp/.env.local
+webapp/.env.*.local
+
+# Log files
+webapp/npm-debug.log*
+
+# Editor directories and files
+webapp/.vscode
+webapp/package-lock.json

@@ -1,0 +1,22 @@
+<section class="homepage">
+  <!-- <b-row>
+    <b-col cols="12">
+      <b-form inline>
+        <b-form-input v-model="maxRows" size="sm" placeholder="max rows" v-on:keydown.enter.prevent
+          @keyup.enter="reloadData()" />
+        <b-btn variant="info" size="sm" @click="reloadData()">Filter</b-btn>
+      </b-form>
+    </b-col>
+  </b-row> -->
+  <b-row>
+    <b-col cols="12">
+      <echarts :options="chartRegioniNumQuote" class="dvchart" />
+    </b-col>
+  </b-row>
+  <nav class="navbar fixed-bottom">
+    <div>
+      <span class="etichettaLabel"># viewpoints: </span>
+      <span class="etichettaValore">xx</span>
+    </div>
+  </nav>
+</section>
