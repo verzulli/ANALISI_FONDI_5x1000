@@ -1,6 +1,8 @@
 # ANALISI FONDI 5x1000
 Convertitore PDF => TXT (leggibile) dei dati relativi alla distribuzione del 5x1000
 
+[Link alla WebApp](https://verzulli.github.io/ANALISI_FONDI_5x1000/)
+
 ## Cos'é questo progetto?
 I dati relativi alla distribuzione del 5x1000 vengono rilasciati ufficialmente in formato PDF [1].
 
@@ -29,7 +31,7 @@ $ wc -l out.txt
 ## Come di usa?
 1. Te lo cloni
 2. rimuovi il file out.txt
-3. lanci `./pdf2txt <pdf>`
+3. lanci `./pdf2txt *.pdf`
 
 ## Perché l'ho fatto?
 Perché mio fratello è Presidente dell'[Associazione Autismo Abruzzo ONLUS](https://www.autismoabruzzo.it/), ossia una di quelle righe!
@@ -42,10 +44,15 @@ Chissè se i prossimi PDF saranno processabili allo stesso modo oppure... ora ch
 
 OpenData, please!
 
+## Cosa ho fatto
+
+1. l'applicazione PERL che prende i PDF e produce un CSV (importabile in LibreOffice Calc, o altri fogli elettronici capaci di leggere un file di testo e spaccarlo in base al carattere "|" (pipe))
+
+2. una [web-app](https://verzulli.github.io/ANALISI_FONDI_5x1000/) sulla quale, man mano, verranno aggiunti un po' di grafici. La webApp è 100% client-side, ed è basata sul framework [VueJS](https://vuejs.org/)
 ## Cosa da sapere
-+ lo script non verifica la presenza di doppioni; se lo lanci due volte sullo stesso file, lui esegue senza problemi;
++ lo script sovrascrive ogni volta il file risultato;
 + lo script tende ad essere rigoroso: al minimo problema... si ferma e non fa niente
-+ quando lanciato, in standard output riporta un tot di cose... che si possono ignorare
++ quando lanciato, in standard output riporta un trace delle attivita' in corso. Trace che... si possono ignorare
 + se si e' curiosi di capire come e' evoluto nel (poco) tempo di sviluppo (~5 ore), date un'occhiata ai commit
 
 ## Riferimenti
