@@ -4,8 +4,9 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 const routes = [
-  { path: '*', redirect: '/' },
-  { path: '/', name: 'homepage', component: () => import('../components/homepage') }
+  { path: '*', redirect: '/torte' },
+  { path: '/torte', name: 'torte', component: () => import('../components/torte') },
+  { path: '/mappa', name: 'mappa', component: () => import('../components/mappa') }
 ]
 
 const router = new VueRouter({

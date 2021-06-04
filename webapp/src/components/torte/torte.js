@@ -8,7 +8,7 @@ import 'echarts/lib/component/title'
 import 'echarts/lib/component/tooltip'
 
 export default {
-  name: 'homepage',
+  name: 'torte',
   components: {
     'echarts': ECharts
   },

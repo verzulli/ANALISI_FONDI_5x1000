@@ -7,6 +7,10 @@
           HOME
         </b-navbar-brand>
         <b-collapse is-nav id="nav_collapse">
+          <b-navbar-nav>
+            <b-nav-item to="/torte">Torte</b-nav-item>
+            <b-nav-item href="/mappa">Mappa Province</b-nav-item>
+          </b-navbar-nav>
           <b-navbar-nav class="ml-auto">
             <div>5 x 1000 - Grapher - v. 0.1pre-alfa - 01/06/2021</div> .
           </b-navbar-nav>
