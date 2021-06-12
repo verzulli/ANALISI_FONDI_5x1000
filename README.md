@@ -4,9 +4,9 @@ Convertitore PDF => TXT (leggibile) dei dati relativi alla distribuzione del 5x1
 [Link alla WebApp](https://verzulli.github.io/ANALISI_FONDI_5x1000/)
 
 ## Cos'é questo progetto?
-I dati relativi alla distribuzione del 5x1000 vengono rilasciati ufficialmente in formato PDF [1].
+I dati relativi alla distribuzione del 5x1000 vengono rilasciati ufficialmente in formato PDF direttamente [sul sito dell'Agenzia delle Entrate](https://www.agenziaentrate.gov.it/portale/area-tematica-5x1000)
 
-Nel caso dell'anno fiscale 2019, si tratta dei 5 PDF che trovate nel progetto, ognuno dei quali riporta una tabella che ha 13.000 righe. Ogni PDF ha oltre 400 pagine. In dettaglio:
+Nel caso dell'anno fiscale [2019](https://www.agenziaentrate.gov.it/portale/elenco-complessivo-dei-beneficiari-2019), si tratta dei 5 PDF che trovate nel progetto, ognuno dei quali riporta una tabella che ha 13.000 righe. Ogni PDF ha oltre 400 pagine. In dettaglio:
 
 ~~~
 $ ls *pdf | xargs -I % sh -c 'echo -n %; echo -n " "; pdfinfo % | grep Pages'
@@ -21,12 +21,16 @@ $ ls *pdf | xargs -I % sh -c 'echo -n %; echo -n " "; pdfinfo % | grep Pages'
 
 Obiettivo di questo progetto è di realizzare una applicazione PERL in grado di agevolare l'estrazione di contenuti da tali PDF.
 
-...e il risultato è presente nel file `out.txt`
+Lo sviluppo dell'applicativo è ancora in itinere. Si è iniziato con l'anno 2019, realizzando un parser per i relativi PDF. 
+
+Il parser pare funzionare (sul 2019)... e il risultato è presente nel file `out.txt`
 
 ~~~
 $ wc -l out.txt 
 66494 out.txt
 ~~~
+
+Per gli altri anni ([2020](https://www.agenziaentrate.gov.it/portale/web/guest/elenco-5x1000-2020-enti-ammessi-categorie-di-beneficiari), [2018](https://www.agenziaentrate.gov.it/portale/elenco-complessivo-beneficiari-2018), [2017](https://www.agenziaentrate.gov.it/portale/archivio/archivioschedeadempimento/schede-adempimento-2017/agevolazioni-2017/iscrizione-elenchi-5-per-mille-2017/elenchi-5xmille2017/elenco-completo-beneficiari-5xmille2017)) sono disponibili altri file PDF, che pur essendo simili.. in realtà sono stati generati diversamente e quindi non possono essere processati dal parser in modo identico al 2019. Servirà aggiornarlo... ed i relativi lavori sono ancora "in corso" :-)
 
 ## Come di usa?
 1. Te lo cloni
